@@ -1,0 +1,49 @@
+button {
+    background-color: #0c7b93;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+    display: inline;
+    border: 1px solid;
+    border-color: gray;
+  }
+
+.margin {
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: justify;
+}
+
+.center {
+  background-position: center;
+  max-width: 50%;
+  max-height: 50%;
+}
+div {
+  border: 10px solid gray;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  color: #4CAF50;
+}
+
+p {
+  text-indent: 50px;
+  text-align: justify;
+  letter-spacing: 3px;
+}
+
+a {
+  text-decoration: none;
+  color: #008CBA;
+}

@@ -1,0 +1,32 @@
+<app-header></app-header>
+<div class="container-fluid py-5 bg-light">
+  <div class="row">
+
+    <div class="col-md-4 col-lg-3 my-3 d-flex align-items-stretch" *ngFor="let article of newArticles; index as i;">
+      <mdb-card>
+
+        <mdb-card-body>
+          <mdb-card-title class="card-title text-capitalize">
+            <h4>{{article.url| slice: 7}}</h4>
+          </mdb-card-title>
+
+          <mdb-card-text class="text-justify">
+            {{article.time}}
+          </mdb-card-text>
+
+          <mdb-card-text class="text-justify">
+            {{article.paragraph | slice:0:250 }} ...
+          </mdb-card-text>
+
+
+          <ngb-rating [(rate)]="article.currentRate"  [max]="5" style="font-size:3rem;"></ngb-rating>
+          <hr>
+          <pre>Rate: <b>{{article.currentRate}}</b></pre>
+
+        </mdb-card-body>
+        <button class="card-button" (click)="goToDetails(i)" mdbBtn color="primary" mdbWavesEffect>Read more</button>
+      </mdb-card>
+    </div>
+    <br>
+  </div>
+</div>

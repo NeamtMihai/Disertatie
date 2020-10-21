@@ -1,0 +1,59 @@
+<head>
+    <title>Header</title>
+  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+ 
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+ 
+  </head>
+  
+ <body>
+    <script type="text/javascript" src="node_modules/mdbootstrap/js/jquery.min.js"></script>
+    <script type="text/javascript" src="node_modules/mdbootstrap/js/popper.min.js"></script>
+    <script type="text/javascript" src="node_modules/mdbootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="node_modules/mdbootstrap/js/mdb.min.js"></script>
+
+  <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark">
+  
+  
+    <mdb-navbar-brand><a class="navbar-brand" href="#"></a></mdb-navbar-brand>
+  
+    <links>
+    
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link waves-link" mdbWavesEffect href="/home"><i class="fas fa-home"></i>Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-light" mdbWavesEffect routerLink="/articles"><i class="fas fa-newspaper"></i>Search</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-light" mdbWavesEffect routerLink="/world"><i class="fas fa-globe-americas"></i>World</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-light" mdbWavesEffect routerLink="/travel"><i class="fa fa-plane"></i>Travel</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-light" mdbWavesEffect routerLink="/business"><i class="fas fa-chart-line"></i>Business</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-light" mdbWavesEffect routerLink="/sport"><i class="fas fa-futbol"></i>Sport</a>
+            </li>
+        </ul>
+  
+  
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" (click)="doLogout()"><i class="fas fa-sign-out-alt"></i>Logout</a>
+            </li>
+        </ul>
+  
+  
+    </links>
+  </mdb-navbar> 
+</body>
+ 

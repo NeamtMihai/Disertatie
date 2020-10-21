@@ -1,0 +1,17 @@
+<app-header></app-header>
+<br>
+<button (click)="goBack()">Back to List</button> &nbsp;
+<button (click)="goPrevious()">Previous Article</button> &nbsp;
+<button (click)="goNext()">Next Article</button>
+<br><br>
+<br>
+<br>
+<br>
+
+
+<div class="margin">
+  <h1> {{newArticle.url}} </h1>
+  <p> at {{newArticle.time}}</p>
+  <a href="{{newArticle.url}}">{{newArticle.author}}</a>
+  <p> {{newArticle.paragraph}}</p>
+</div>

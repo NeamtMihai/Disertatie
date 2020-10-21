@@ -1,0 +1,74 @@
+<head>
+    <title>Login</title>
+
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel="stylesheet" id="bootstrap-css">
+    <link href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous' rel='stylesheet'>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+
+</head>
+
+<body background="../../assets/img/data-storage.jpg">
+    <div class="">
+        <div class="container d-flex justify-content-center">
+            <div class="row">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Login</strong>
+                    </div>
+                    <div class="card-body">
+                        <form name="login" id="login">
+                            <div class="row">
+                                <div class="col">
+                                    <span class="profile-img">
+                                        <i class='fas fa-user-circle' style='font-size:120px'></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <hr>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">
+                                                    <i class='fas fa-user-shield'></i>
+                                                </span>
+                                            </div>
+                                            <input class="form-control" #email placeholder="Email" value="admin@admin.com" id="loginEmail" name="loginEmail" type="email" autofocus>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">
+                                                    <i class='fas fa-user-secret'></i>
+                                                </span>
+                                            </div>
+                                            <input class="form-control" #password placeholder="Password" value="Password1!" id="loginPassword" name="loginPassword" type="password">
+                                        </div>
+                                    </div>
+                                    <div class="alert alert-danger" *ngIf="invalidCredentials && !loading">Invalid username or password!</div>
+                                    <div class="form-group">
+                                        <input type="button" class="btn btn-lg btn-success btn-block submit" id="login_m" value="Sign in" (click)="doLogin(email.value,password.value)">
+                                    </div>
+                                    <p class="loginhere">
+                                        Don't have an account ? <a href="/register" class="loginhere-link">Register here</a>
+                                    </p>
+                                    <div class="form-group" *ngIf="testare">
+                                        <a href="/home" class="loginhere-link">Login</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,38 @@
+<app-header></app-header>
+<div class="container-fluid py-5 bg-light">
+  <div class="row">
+
+    <div class="col-md-4 col-lg-3 my-3 d-flex align-items-stretch" *ngFor="let article of newArticles; index as i;">
+      <mdb-card>
+
+        <div class="view rgba-white-slight waves-light" mdbWavesEffect *ngIf="article.thread.main_image; then thenBlock; else elseBlock"></div>
+        <ng-template #thenBlock>
+          <mdb-card-img class="card-img-top img-fluid" [src]="article.thread.main_image" alt="Card image cap"></mdb-card-img>
+          <a>
+            <div class="mask"></div>
+          </a>
+        </ng-template>
+
+        <ng-template #elseBlock>
+          <mdb-card-img src="assets/images/newspaper.png" alt="Card image cap"></mdb-card-img>
+          <a>
+            <div class="mask"></div>
+          </a>
+        </ng-template>
+
+        <mdb-card-body>
+          <mdb-card-title class="card-title text-capitalize">
+            <h4>{{article.title}}</h4>
+          </mdb-card-title>
+
+          <mdb-card-text class="text-justify">
+            {{article.text | slice:0:250 }} ...
+          </mdb-card-text>
+
+        </mdb-card-body>
+        <button class="card-button" (click)="goToDetails(i)" mdbBtn color="primary" mdbWavesEffect>Read more</button>
+      </mdb-card>
+    </div>
+    <br>
+  </div>
+</div>
