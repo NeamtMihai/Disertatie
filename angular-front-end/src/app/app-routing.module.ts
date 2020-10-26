@@ -20,7 +20,7 @@ const routes: Routes = [
   {path:"header", component: HeaderComponent,},
   {path:"login", component: LoginComponent},
   {path:"register", component: RegisterComponent},
-  {path:"home", component: HomeComponent, },
+  {path:"home", component: WorldComponent, },
   {path:"articles", component: ArticleListPageComponent, },
   {path:"article/:i", component: ArticleDetailsComponent,},
   {path:"world", component: WorldComponent, },
