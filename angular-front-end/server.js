@@ -39,7 +39,7 @@ app.get('/*', (req, res) => {
 const server = http.createServer(app)
 
 server.listen(port, () => {
-    console.log("merge serveru de mongo Varule...")
+    console.log("Database Server Running on port "+port+" ...")
 })
 
 //to run this server tipe  node server.js
