@@ -22,8 +22,8 @@ export class ArticlesService {
 
   //apiURL = 'http://webhose.io/filterWebContent?token=f5873209-ee92-451a-9f08-4c398383fd2f&format=json&sort=relevancy';
   apiURL = 'http://webhose.io/filterWebContent?token=bc6cff71-59c8-4b57-98a8-eb6ec2be4cd1&format=json&sort=relevancy';
-  mongoURL = 'localhost:3001'
-  response;
+  mongoURL = 'http://localhost:3001'
+  response: Article[];
   constructor(private httpClient: HttpClient) {}
 
   getArticles(query: string): Observable < MyResponse > {
@@ -368,11 +368,17 @@ export class ArticlesService {
     }];
   }
 
-  getMongoArticles(){  
-    this.response = this.httpClient.get < Article > (this.mongoURL);
-    console.log("response= " + this.response[0])
-    return(this.response[0])
+  getMongoArticles(): Observable < Article[] >{  
+    // this.response = this.httpClient.get  < Article[] > (this.mongoURL);
+    // console.log("response= " + this.response[0])
+    // return(this.response[0])
     // return this.httpClient.get < MyResponse > (this.mongoURL);
+    return this.httpClient.get  < Article[] > (this.mongoURL);
+  }
+
+  updateArticle(article):void{
+    // console.log(article)
+    this.httpClient.put(this.mongoURL, article);
   }
 
   getArticlesWithException(query: string, exception: string): Observable < MyResponse > {

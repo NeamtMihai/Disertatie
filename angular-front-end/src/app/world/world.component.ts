@@ -12,18 +12,19 @@ export class WorldComponent implements OnInit {
   
   title = 'World News';
   newArticles: any;
-  // currentRate = 8;
-
 
   constructor(private router: Router, private _articlesService: ArticlesService, private dataService: DataService) { }
 
   ngOnInit(): void {
     // this._articlesService.getArticles(this.query).subscribe(data => this.newArticles = data.posts);
     this.newArticles =this._articlesService.getNewArticles();
-    this._articlesService.getMongoArticles();
+    this._articlesService.getMongoArticles().subscribe(data => this.newArticles = data);
     
   }
-
+  updateRating(article){
+      // console.log(article)
+      this._articlesService.updateArticle(article);
+  }
   goToDetails(index: number) {
     this.dataService.changeMessage(this.newArticles);
     this.router.navigate(['/article', index]);

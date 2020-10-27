@@ -19,12 +19,12 @@
           </mdb-card-text>
 
 
-          <ngb-rating [(rate)]="article.currentRate"  [max]="5" style="font-size:3rem;"></ngb-rating>
+          <ngb-rating [(rate)]="article.currentRate"  [max]="5" style="font-size:3rem; color: #00a8cc;" (click)="updateRating(article)"></ngb-rating>
           <hr>
           <pre>Rate: <b>{{article.currentRate}}</b></pre>
 
         </mdb-card-body>
-        <button class="card-button" (click)="goToDetails(i)" mdbBtn color="primary" mdbWavesEffect>Read more</button>
+        <button class="card-button" (click)="goToDetails(i)" mdbBtn color="005082" mdbWavesEffect>Read more</button>
       </mdb-card>
     </div>
     <br>
