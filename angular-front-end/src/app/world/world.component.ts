@@ -20,7 +20,8 @@ export class WorldComponent implements OnInit {
   ngOnInit(): void {
     // this._articlesService.getArticles(this.query).subscribe(data => this.newArticles = data.posts);
     this.newArticles =this._articlesService.getNewArticles();
-    // this._articlesService.getNewNewArticles();
+    this._articlesService.getMongoArticles();
+    
   }
 
   goToDetails(index: number) {

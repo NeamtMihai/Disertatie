@@ -6,7 +6,9 @@ import {
   HttpParams
 } from '@angular/common/http';
 import {
-  MyResponse
+  MyResponse,
+  MyNewResponse,
+  Article
 } from '../myresponse';
 import {
   Observable
@@ -20,8 +22,8 @@ export class ArticlesService {
 
   //apiURL = 'http://webhose.io/filterWebContent?token=f5873209-ee92-451a-9f08-4c398383fd2f&format=json&sort=relevancy';
   apiURL = 'http://webhose.io/filterWebContent?token=bc6cff71-59c8-4b57-98a8-eb6ec2be4cd1&format=json&sort=relevancy';
-
-
+  mongoURL = 'localhost:3001'
+  response;
   constructor(private httpClient: HttpClient) {}
 
   getArticles(query: string): Observable < MyResponse > {
@@ -364,6 +366,13 @@ export class ArticlesService {
       "time": "14.10.2020 20:41:00",
       "paragraph": "\n                    \n                    5 stars\n            \n                    \n                    5 stars\n            \n                    \n                    5 stars\n            \n                     212 shares\n            \n                     68 shares\n            \n                     49 shares\n            \n                     872 tries\n            \n                     647 tries\n            \n                     436 tries\n            Taster is where you can Try, Rate and Share new ideas from the BBC and its partners. All content on this site is designed for people over 16, and may contain adult themes.We really want your feedback to help us steer future research and development. Taster will be updated regularly as ideas come and go. For more see About Taster and the Terms of Use."
     }];
+  }
+
+  getMongoArticles(){  
+    this.response = this.httpClient.get < Article > (this.mongoURL);
+    console.log("response= " + this.response[0])
+    return(this.response[0])
+    // return this.httpClient.get < MyResponse > (this.mongoURL);
   }
 
   getArticlesWithException(query: string, exception: string): Observable < MyResponse > {
