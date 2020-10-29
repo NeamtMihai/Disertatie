@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ArticlesService } from '../Services/articles.service';
 import { DataService } from '../Services/data.service';
 
+
 @Component({
   selector: 'app-world',
   templateUrl: './world.component.html',
@@ -17,13 +18,15 @@ export class WorldComponent implements OnInit {
 
   ngOnInit(): void {
     // this._articlesService.getArticles(this.query).subscribe(data => this.newArticles = data.posts);
-    this.newArticles =this._articlesService.getNewArticles();
+    // this.newArticles =this._articlesService.getNewArticles();
     this._articlesService.getMongoArticles().subscribe(data => this.newArticles = data);
     
   }
-  updateRating(article){
-      // console.log(article)
-      this._articlesService.updateArticle(article);
+  updateRating(i){
+      console.log(":World component " + JSON.stringify(this.newArticles[i].currentRate))
+      setTimeout(()=>{
+        this._articlesService.updateArticle(this.newArticles[i]).subscribe();
+      }, 1000)
   }
   goToDetails(index: number) {
     this.dataService.changeMessage(this.newArticles);

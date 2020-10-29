@@ -3,13 +3,19 @@ const http = require('http')
 const mongo = require('mongodb');
 const MongoClient = mongo.MongoClient;
 const url = 'mongodb://localhost:27017';
-
+const bodyParser = require("body-parser");
+var router = require("express").Router();
+var ObjectID = require('mongodb').ObjectID;
 const app = express();
 
 const port = 3001
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/*', (req, res) => {
+
+router.get('/*', (req, res) => {
+    // console.log("retriving articles...")
     MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
 
         if (err) throw err;
@@ -18,7 +24,7 @@ app.get('/*', (req, res) => {
 
         db.collection('articles').find({}).toArray().then((docs) => {
 
-            // console.log(docs);
+            console.log("articles retrived");
             res.json(docs)
 
         }).catch((err) => {
@@ -33,35 +39,51 @@ app.get('/*', (req, res) => {
 }
 )
 
-app.put('/*', (req, res) => {
+router.put('/', (req, res) => {
 
-    console.log(req)
+    console.log("updating articles...")
+    // console.log(req.body)
 
     if (!req.body) {
         return res.status(400).send({
             message: "Data to update can not be empty!"
         });
     }
+    MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
+        const db = client.db("articles");
+        // var myquery = { url: req.body.url.toString() };
+        var myquery = { "_id": ObjectID(req.body._id)}
+        // console.log("myquery "+JSON.stringify(myquery))
+        var newvalues = { $set: {currentRate: req.body.currentRate.toString()}};
+        console.log("newvalues "+JSON.stringify(newvalues))
 
-    const id = req.params.id;
-    const db = client.db("articles");
+        db.collection('articles').update(myquery, newvalues, function(err, res) {
+            if (err) throw err;
+            // console.log("1 document updated");
+            console.log(res.result)
+            client.close();
+          });
 
-    db.collection('articles').findByIdAndUpdate(id, req.body, { useFindAndModify: false })
-        .then(data => {
-            if (!data) {
-                res.status(404).send({
-                    message: `Cannot update Tutorial with id=${id}. Maybe Tutorial was not found!`
-                });
-            } else res.send({ message: "Tutorial was updated successfully." });
-        })
-        .catch(err => {
-            res.status(500).send({
-                message: "Error updating Tutorial with id=" + id
-            });
-        });
+
+        // db.collection('articles').findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+        //     .then(data => {
+        //         if (!data) {
+        //             res.status(404).send({
+        //                 message: `Cannot update Tutorial with id=${id}. Maybe Tutorial was not found!`
+        //             });
+        //         } else res.send({ message: "Tutorial was updated successfully." });
+        //     })
+        //     .catch(err => {
+        //         res.status(500).send({
+        //             message: "Error updating Tutorial with id=" + id
+        //         });
+        //     });
+
+    })          
 })
 
 
+app.use('', router);
 
 const server = http.createServer(app)
 

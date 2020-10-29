@@ -376,9 +376,10 @@ export class ArticlesService {
     return this.httpClient.get  < Article[] > (this.mongoURL);
   }
 
-  updateArticle(article):void{
-    // console.log(article)
-    this.httpClient.put(this.mongoURL, article);
+  updateArticle(article):Observable <any>{
+    // console.log("Service "+JSON.stringify(article))
+    // console.log("calling put")
+    return this.httpClient.put(this.mongoURL, article);    
   }
 
   getArticlesWithException(query: string, exception: string): Observable < MyResponse > {

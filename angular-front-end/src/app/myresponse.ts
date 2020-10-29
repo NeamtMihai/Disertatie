@@ -7,7 +7,7 @@ export interface MyResponse {
     warnings: null;
 }
 export interface Article {
-    _id: { $oid: string; }; url: string; time: string; paragraph: string;
+    _id: { $oid: string; }; url: string; time: string; paragraph: string; currentRate:string
  }
  
 export interface MyNewResponse {
