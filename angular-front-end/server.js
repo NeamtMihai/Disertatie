@@ -7,11 +7,13 @@ const bodyParser = require("body-parser");
 var router = require("express").Router();
 var ObjectID = require('mongodb').ObjectID;
 const app = express();
+var cors = require('cors')
 
 const port = 3001
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors())
 
 
 router.get('/*', (req, res) => {
@@ -25,7 +27,7 @@ router.get('/*', (req, res) => {
         db.collection('articles').find({}).toArray().then((docs) => {
 
             console.log("articles retrived");
-            res.json(docs)
+            res.json(docs.sort( () => .5 - Math.random() ))
 
         }).catch((err) => {
 
@@ -54,7 +56,8 @@ router.put('/', (req, res) => {
         // var myquery = { url: req.body.url.toString() };
         var myquery = { "_id": ObjectID(req.body._id)}
         // console.log("myquery "+JSON.stringify(myquery))
-        var newvalues = { $set: {currentRate: req.body.currentRate.toString()}};
+        // var newvalues = { $set: {currentRate: req.body.currentRate.toString()}};
+        var newvalues = { $set: {currentRate: req.body.currentRate.toString(), isGroundTruth : true}};
         console.log("newvalues "+JSON.stringify(newvalues))
 
         db.collection('articles').update(myquery, newvalues, function(err, res) {

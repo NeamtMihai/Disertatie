@@ -19,7 +19,7 @@
           </mdb-card-text>
 
 
-          <ngb-rating [(rate)]="article.currentRate"  [max]="5" style="font-size:3rem; color: #00a8cc;" (click)="updateRating(i)"></ngb-rating>
+          <ngb-rating [(rate)]="article.currentRate"  [max]="5" style="font-size:3rem; " [style.color]="color(i)" (click)="updateRating(i)"></ngb-rating>
           <hr>
           <pre>Rate: <b>{{article.currentRate}}</b></pre>
 

@@ -25,11 +25,20 @@ export class WorldComponent implements OnInit {
   updateRating(i){
       console.log(":World component " + JSON.stringify(this.newArticles[i].currentRate))
       setTimeout(()=>{
+        this.newArticles[i].isGroundTruth = true;
         this._articlesService.updateArticle(this.newArticles[i]).subscribe();
       }, 1000)
   }
   goToDetails(index: number) {
     this.dataService.changeMessage(this.newArticles);
     this.router.navigate(['/article', index]);
+  }
+
+  color(i){
+    // if(Math.random()>0.5)
+      if(this.newArticles[i].isGroundTruth)
+       return '#00a8cc';
+       else 
+       return '#2b580c'
   }
 }
